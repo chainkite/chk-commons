@@ -1,3 +1,6 @@
+import sbt._
+import Keys._
+
 object Dependencies {
   // val slf4j = "org.slf4j" % "slf4j-api" % "1.7.10"
   val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging" % "3.1.0"
