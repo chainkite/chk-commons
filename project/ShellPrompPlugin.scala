@@ -2,7 +2,7 @@ import scala.language.postfixOps
 import sbt._
 import Keys._
 
-trait ShellPromptPlugin {
+object ShellPromptPlugin {
 
   val devnull: ProcessLogger = new ProcessLogger {
     def info (s: => String) {}
