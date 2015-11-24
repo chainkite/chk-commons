@@ -15,6 +15,12 @@ lazy val commonDeps = Seq(
   scalatest
 )
 
+lazy val depOverrides = Set(
+  slf4j,
+  typesafeConfig,
+  scalatest
+)
+
 lazy val buildSettings = Seq(
   organization := "com.chn",
   version in ThisBuild := VERSION,
@@ -28,13 +34,21 @@ lazy val buildSettings = Seq(
 )
 
 lazy val `chk-commons` = (project in file(".")).
-    settings(buildSettings: _*).
-    aggregate(`chk-commons-core`)
+  settings(buildSettings: _*).
+  aggregate(`chk-commons-core`, `chk-commons-test`)
 
 lazy val `chk-commons-core` = (project in file("core")).
   settings(buildSettings: _*).
   settings(
     libraryDependencies ++= commonDeps ++ Seq(
-      scaldiCore % Provided, mavenArtifact % Provided
-    )
+      commonsCodec, scaldiCore % Provided, mavenArtifact % Provided.intransitive
+    ),
+    dependencyOverrides ++= depOverrides
+  ).dependsOn(`chk-commons-test`)
+
+lazy val `chk-commons-test` = (project in file("test")).
+  settings(buildSettings: _*).
+  settings(
+    libraryDependencies ++= commonDeps,
+    dependencyOverrides ++= depOverrides
   )
