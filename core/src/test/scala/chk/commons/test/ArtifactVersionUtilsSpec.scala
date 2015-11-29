@@ -1,6 +1,5 @@
-package chk.commons.test.util
+package chk.commons.test
 
-import chk.commons.test.util.test.UnitSpec
 import chk.commons.util.ArtifactVersionUtils
 import org.apache.maven.artifact.versioning.{DefaultArtifactVersion, InvalidVersionSpecificationException, VersionRange}
 

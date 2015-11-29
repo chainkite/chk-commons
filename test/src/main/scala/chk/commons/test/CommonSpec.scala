@@ -1,4 +1,4 @@
-package chk.commons.test.util.test
+package chk.commons.test
 
 import org.scalatest._
 import org.scalatest.concurrent.{Futures, AsyncAssertions, ScalaFutures}

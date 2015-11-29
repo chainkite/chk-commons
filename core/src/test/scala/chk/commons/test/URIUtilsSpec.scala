@@ -1,8 +1,6 @@
-package chk.commons.test.util
+package chk.commons.test
 
 import java.net.{URI, URLDecoder}
-
-import chk.commons.test.util.test.UnitSpec
 import chk.commons.util.{MapUtils, URIUtils}
 
 

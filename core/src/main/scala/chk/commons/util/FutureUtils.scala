@@ -6,15 +6,6 @@ import scala.util.Try
 
 trait FutureUtils {
 
-  def serializeFutures[A, B](l: Iterable[A])(fn: A => Future[B])(implicit ec: ExecutionContext): Future[List[B]] = {
-    l.foldLeft(Future(List.empty[B])) { (prevFuture, next) =>
-      for {
-        prevResult <- prevFuture
-        next <- fn(next)
-      } yield prevResult :+ next
-    }
-  }
-
   implicit class FutureOps[T](f: Future[T]) {
 
     /**
@@ -26,18 +17,6 @@ trait FutureUtils {
     def recoverBy(obj: T)(implicit ec: ExecutionContext): Future[T] = {
       f.recoverWith {
         case e: Throwable => obj
-      }
-    }
-
-    /**
-      * Catch all exceptions with provided recovered function
-      * @param func recovered function
-      * @param ec Execution Context
-      * @return Future with recovered object if exception occurs
-      */
-    def recoverBy(func: Throwable => T)(implicit ec: ExecutionContext): Future[T] = {
-      f.recoverWith {
-        case e: Throwable => func(e)
       }
     }
 

@@ -1,7 +1,6 @@
 package chk.commons.test
 
 import chk.commons.ChkException
-import chk.commons.test.util.test.UnitSpec
 
 class ChkExceptionSpec extends UnitSpec {
 

@@ -1,4 +1,4 @@
-package chk.commons.test.util.test.util
+package chk.commons.test.util
 
 import java.nio.file.{Paths, Files}
 
