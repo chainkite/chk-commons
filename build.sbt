@@ -22,7 +22,7 @@ lazy val depOverrides = Set(
 )
 
 lazy val buildSettings = Seq(
-  organization := "com.chn",
+  organization := "chainkite",
   version in ThisBuild := VERSION,
   scalaVersion := "2.11.7",
   shellPrompt := buildShellPrompt(version.value),
@@ -30,7 +30,10 @@ lazy val buildSettings = Seq(
   scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:higherKinds", "-language:postfixOps",
     "-language:implicitConversions", "-language:reflectiveCalls", "-language:existentials", s"-target:jvm-$jvmTarget",
     "-encoding", "utf8"),
-  javacOptions in Compile ++= Seq("-target", jvmTarget, "-source", jvmSource, "-Xlint:deprecation")
+  javacOptions in Compile ++= Seq("-target", jvmTarget, "-source", jvmSource, "-Xlint:deprecation"),
+  resolvers += "Chainkite Repository" at "http://dl.bintray.com/chainkite/maven",
+  licenses += ("MIT", url("http://opensource.org/licenses/MIT")),
+  bintrayReleaseOnPublish in ThisBuild := false
 )
 
 lazy val `chk-commons` = (project in file(".")).
