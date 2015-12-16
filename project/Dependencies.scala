@@ -11,10 +11,7 @@ object Dependencies {
     final lazy val scaldi = "0.5.6"
     final lazy val mavenArtifact = "3.3.3"
     final lazy val commonsCodec = "1.10"
-    final lazy val scalaXml = "1.0.5"
   }
-
-  lazy val scalaXml = "org.scala-lang.modules" %% "scala-xml" % V.scalaXml
 
   lazy val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging" % V.scalaLogging
   lazy val slf4j = "org.slf4j" % "slf4j-api" % V.slf4j

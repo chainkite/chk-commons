@@ -38,6 +38,7 @@ lazy val buildSettings = Seq(
 
 lazy val `chk-commons` = (project in file(".")).
   settings(buildSettings: _*).
+  settings(publishArtifact := false).
   aggregate(`chk-commons-core`, `chk-commons-test`)
 
 lazy val `chk-commons-core` = (project in file("core")).
