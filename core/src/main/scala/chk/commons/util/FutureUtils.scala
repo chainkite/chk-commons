@@ -46,6 +46,18 @@ trait FutureUtils {
       p.future
     }
 
+    /**
+      * Retry
+      * @param times
+      * @param block Retry block
+      * @param ec
+      * @return Future retried n times
+      */
+    def retry(times: Int)(block: => Future[T] = f)(implicit ec: ExecutionContext): Future[T] = {
+      (1 to times).map(_ => () => block).foldLeft(f) {
+        case (failed, retryBlock) => failed.recoverWith{ case _ => retryBlock() }
+      }
+    }
   }
 
   implicit class FuturesOps[T](f: Future[Future[T]]) {

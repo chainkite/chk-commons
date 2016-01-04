@@ -25,4 +25,11 @@ class FutureUtilsSpec extends FutureUtils with UnitSpec {
     Await.result(Future(success).flatten, 10 seconds) should be (1)
   }
 
+  it should "retry" in {
+    an [ChkException] should be thrownBy (Await.result(failure.retry(3)(failure), 10 seconds))
+    Await.result(failure.map(_ => 0).retry(3)(success), 10 seconds) should be (1)
+    Await.result(success.retry(3)(failure), 10 seconds) should be (1)
+
+  }
+
 }

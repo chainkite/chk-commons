@@ -2,7 +2,7 @@ import Dependencies._
 import ShellPromptPlugin._
 
 
-lazy val VERSION = "0.1.1"
+lazy val VERSION = "0.1.2-SNAPSHOT"
 
 lazy val jvmSource = "1.8"
 lazy val jvmTarget = "1.8"
